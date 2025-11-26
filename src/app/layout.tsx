@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import "./globals.css";
+import { Navbar } from "~/components/layout/Navbar";
 import { Toaster } from "~/components/ui/sonner";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Ecommerce Frontend",
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${plusJakartaSans.variable} font-sans antialiased`}>
+        <Navbar />
         {children}
         <Toaster />
       </body>
