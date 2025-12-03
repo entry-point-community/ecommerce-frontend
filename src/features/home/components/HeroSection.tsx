@@ -2,7 +2,7 @@ import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import heroImage from "~/assets/hero.webp";
-import { Button } from "~/components/ui/button";
+import { Button, buttonVariants } from "~/components/ui/button";
 
 const HeroImage = () => {
   return (
@@ -36,11 +36,16 @@ export const HeroSection = () => {
           products delivered to your door.
         </p>
 
-        <Link href="/products" className="w-fit">
-          <Button variant="default" size="lg">
-            Shop Now
-            <ArrowRightIcon className="size-4" />
-          </Button>
+        <Link
+          href="/products"
+          className={buttonVariants({
+            variant: "default",
+            size: "lg",
+            className: "w-fit",
+          })}
+        >
+          Shop Now
+          <ArrowRightIcon className="size-4" />
         </Link>
       </div>
     </section>
