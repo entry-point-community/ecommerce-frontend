@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { Navbar } from "~/components/layout/Navbar";
 import { Toaster } from "~/components/ui/sonner";
 import "./globals.css";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Ecommerce Frontend",
@@ -21,10 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakartaSans.variable} font-sans antialiased pb-20`}>
-        <Navbar />
-        {children}
-        <Toaster />
+      <body
+        className={`${plusJakartaSans.variable} font-sans antialiased pb-20`}
+      >
+        <Providers>
+          <Navbar />
+          {children}
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );
