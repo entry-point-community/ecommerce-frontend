@@ -11,7 +11,7 @@ const placeholderImageUrl =
 
 type ProductCardProps = {
   name: string;
-  category: string;
+  category?: string;
   description: string;
   price: number;
   imageUrl?: string;
@@ -40,7 +40,9 @@ export const ProductCard = (props: ProductCardProps) => {
         <div className="flex flex-col gap-4 p-4">
           {/* Title and Category */}
           <div className="space-y-1">
-            <p className="text-sm text-muted-foreground">{props.category}</p>
+            <p className="text-sm text-muted-foreground">
+              {props.category ?? "Uncategorized"}
+            </p>
             <h3 className="text-lg font-bold">{props.name}</h3>
           </div>
 
