@@ -29,7 +29,7 @@ export const ProductCard = (props: ProductCardProps) => {
       <div className="rounded-xl border flex flex-col gap-4 aspect-[4/3] overflow-clip group hover:shadow-xl transition-all duration-300">
         <div className="relative w-full h-full overflow-hidden">
           <Image
-            src={placeholderImageUrl}
+            src={props.imageUrl ?? placeholderImageUrl}
             alt="Product Image"
             unoptimized
             fill
