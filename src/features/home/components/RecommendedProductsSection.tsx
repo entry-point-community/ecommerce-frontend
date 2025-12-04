@@ -2,15 +2,19 @@
 
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
-import { ProductCard } from "~/components/shared/ProductCard";
+import {
+  ProductCard,
+  ProductCardSkeleton,
+} from "~/components/shared/ProductCard";
 import { Button } from "~/components/ui/button";
 import { ProductSortBy, useGetProducts } from "../api/getProducts";
+import { Activity } from "react";
 
 export const RecommendedProductsSection = () => {
-  const { data: products } = useGetProducts({
+  const { data: products, isLoading: productsIsLoading } = useGetProducts({
     input: {
       sort: ProductSortBy.RECOMMENDED,
-      limit: 6
+      limit: 6,
     },
   });
 
@@ -33,17 +37,25 @@ export const RecommendedProductsSection = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {products?.map((product) => (
-          <ProductCard
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            category={product.category?.name}
-            description={product.description}
-            price={product.price}
-            imageUrl={product.imageUrl}
-          />
-        ))}
+        <Activity mode={products ? "visible" : "hidden"}>
+          {products?.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              category={product.category?.name}
+              description={product.description}
+              price={product.price}
+              imageUrl={product.imageUrl}
+            />
+          ))}
+        </Activity>
+
+        <Activity mode={productsIsLoading && !products ? "visible" : "hidden"}>
+          <ProductCardSkeleton />
+          <ProductCardSkeleton />
+          <ProductCardSkeleton />
+        </Activity>
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { toRupiah } from "~/lib/format";
 import Image from "next/image";
 import Link from "next/link";
+import { Skeleton } from "../ui/skeleton";
 
 const placeholderImageUrl =
   "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hpcnR8ZW58MHx8MHx8fDA%3D";
@@ -63,5 +64,36 @@ export const ProductCard = (props: ProductCardProps) => {
         </div>
       </div>
     </Link>
+  );
+};
+
+export const ProductCardSkeleton = () => {
+  return (
+    <div className="rounded-xl border flex flex-col gap-4 aspect-[4/3] overflow-clip">
+      {/* Image Skeleton */}
+      <div className="relative w-full h-full overflow-hidden">
+        <Skeleton className="w-full h-full" />
+      </div>
+
+      <div className="flex flex-col gap-4 p-4">
+        {/* Title and Category Skeleton */}
+        <div className="space-y-1">
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-6 w-3/4" />
+        </div>
+
+        {/* Description Skeleton */}
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-2/3" />
+        </div>
+
+        {/* Price and CTA Skeleton */}
+        <div className="flex items-center justify-between">
+          <Skeleton className="h-6 w-24" />
+          <Skeleton className="h-10 w-32" />
+        </div>
+      </div>
+    </div>
   );
 };
