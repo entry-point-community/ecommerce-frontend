@@ -1,1 +1,4 @@
-export { default } from "~/features/product/pages/ProductDetailPage";
+export {
+  default,
+  generateMetadata,
+} from "~/features/product/pages/ProductDetailPage";
